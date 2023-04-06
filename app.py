@@ -4,7 +4,11 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 #Create database link here
-
+app.config["MONGO_URI"] = "mongodb+srv://muralidharsrihari:databasepasswd@taskdatabase.hdkcea3.mongodb.net/task_manager?retryWrites=true&w=majority"
+mongo = PyMongo(app)
+db = mongo.db
+db.tasks.create_index([("title", "text"), ("description", "text")]) # Add this line to create a text index on title and description fields
+collections = db.list_collection_names()
 #Functions for filter_tasks() function
 def get_status_count():
     return{
@@ -19,6 +23,22 @@ def get_priority_count():
         'medium' : mongo.db.tasks.count_documents({'priority' : 'Medium'}),
         'high' : mongo.db.tasks.count_documents({'priority' : 'High'}),
     }
+@app.route('/')    
+def index():
+    tasks = db.tasks.find().sort("priority", -1)
+   # print ("tasks = ",tasks)
+    status_counts = {
+        "not_started": db.tasks.count_documents({"status": "Not Started"}),
+        "in_progress": db.tasks.count_documents({"status": "In Progress"}),
+        "completed": db.tasks.count_documents({"status": "Completed"})
+    }
+    priority_counts = {
+        "high": mongo.db.tasks.count_documents({"priority": "High"}),
+        "medium": mongo.db.tasks.count_documents({"priority": "Medium"}),
+        "low": mongo.db.tasks.count_documents({"priority": "Low"})
+    }
+    total_tasks = db.tasks.count_documents({})
+    return render_template('index.html', tasks=tasks, status_counts=status_counts, priority_counts=priority_counts, total_tasks=total_tasks)
 
 @app.route('/filter_tasks', methods = ['POST'])
 def filter_tasks():
