@@ -126,5 +126,26 @@
         </tbody>
     </table>
     <!--Scripts for update and filter section -->
+    <script>
+        const editButtons = document.querySelectorAll('.edit-button');
 
+        editButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const taskId = button.dataset.id;
+                const title = button.parentElement.parentElement.children[0].textContent;
+                const description = button.parentElement.parentElement.children[1].textContent;
+                const priority = button.parentElement.parentElement.children[2].textContent;
+                const status = button.parentElement.parentElement.children[3].textContent;
+                //show the "Update Task" header
+                document.getElementById('update-task-header').classList.remove('hidden');
+
+                document.querySelector('#edit-task-form input[name="title"]').value = title;
+                document.querySelector('#edit-task-form input[name="description"]').value = description;
+                document.querySelector('#edit-task-form select[name="priority"]').value = priority;
+                document.querySelector('#edit-task-form select[name="status"]').value = status;
+                document.querySelector('#edit-task-form').action = `/update_task/${taskId}`;
+                document.querySelector('#edit-task-form').classList.remove('hidden');
+            });
+        });
+    </script>
 </body>
