@@ -40,6 +40,18 @@ def index():
     total_tasks = db.tasks.count_documents({})
     return render_template('index.html', tasks=tasks, status_counts=status_counts, priority_counts=priority_counts, total_tasks=total_tasks)
 
+
+@app.route('/add_task', methods= {'POST'})
+def add_task():
+    task = {
+        "title": request.form.get("title"),
+        "description": = request.form.get("description")
+        "priority": request.form.get("priority")
+        "status": request.form.get("status")        
+    }
+    mongo.db.task.insert_one(task)
+    return redirect(url_for('index'))
+
 @app.route('/filter_tasks', methods = ['POST'])
 def filter_tasks():
     status_filter = request.form.get('status_filter')
@@ -61,6 +73,12 @@ def filter_tasks():
     total_tasks = mongo.db.tasks.count_documents({})
 
     return render_template('index.html', tasks=tasks, status_count=status_count, priority_count=priority_count, total_tasks=total_tasks)
+
+@app.route('/delete_task/<task_id>', methods=['POST'])
+def delete_task(task_id):
+    # Use the ObjectId() function from bson.objectid to convert the task_id string into a MongoDB ObjectId
+    mongo.db.tasks.delete_one({'_id': ObjectId(task_id)})
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug = True)
