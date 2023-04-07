@@ -45,8 +45,8 @@ def index():
 def add_task():
     task = {
         "title": request.form.get("title"),
-        "description": = request.form.get("description")
-        "priority": request.form.get("priority")
+        "description": request.form.get("description"),
+        "priority": request.form.get("priority"),
         "status": request.form.get("status")        
     }
     mongo.db.task.insert_one(task)
