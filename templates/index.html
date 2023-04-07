@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+<!-- Bootstrap part -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3HV5HzF6HVz5G5Wkuj4g4lJ4ZF1hZY" crossorigin="anonymous">
+<link rel="stylesheet" href="./static/styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <style>
+            h1 {text-align: center;}
+            p {text-align: center;}
+        </style>
+         <h1>Task Manager</h1>
+         <p>Total Tasks: {{total_tasks}}</p>
+         <div id="counters">
+        
+            <b>Tasks by Status: </b>
+            Not Started: {{ status_counts.not_started }}
+            In Progress: {{ status_counts.in_progress }}
+            Completed: {{ status_counts.completed }}
+            <br>
+            <b>Tasks by Priority: </b>
+            High: {{ priority_counts.high }}
+            Medium: {{ priority_counts.medium }}
+            Low: {{ priority_counts.low }}
+            
+        </div>    
+         <div class="container my-4">
+            <h2>Filter Tasks: </h2>
+            <!-- add Filter task  -->
+    <h2 class="hidden" id="update-task-header">Update Task: </h2>
+            <!-- Add Update Task  -->
+     <h2>Add Task: </h2>     
+    <!-- Add "Add" Task  -->
+    <h2>Current Tasks: </h2>
+    <!-- Add Current Task -->
+</body>
