@@ -32,7 +32,35 @@
         </div>    
          <div class="container my-4">
             <h2>Filter Tasks: </h2>
-            <!-- add Filter task  -->
+            <form action="{{ url_for('filter_tasks') }}" method="POST" class="row g-3">
+                <div class="col-md-4">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select" name="status_filter" id="status">
+                        <option value="">-- All --</option>
+                        <option value="Not Started">Not Started</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="priority" class="form-label">Priority</label>
+                    <select class="form-select" name="priority_filter" id="priority">
+                        <option value="">-- All --</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="search" class="form-label">Search</label>
+                    <input type="text" class="form-control" name="search_filter" id="search" placeholder="Search tasks">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Show All</a>
+                </div>
+            </form>
+        </div>
     <h2 class="hidden" id="update-task-header">Update Task: </h2>
             <!-- Add Update Task  -->
      <h2>Add Task: </h2>     
