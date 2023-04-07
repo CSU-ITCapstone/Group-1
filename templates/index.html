@@ -148,4 +148,17 @@
             });
         });
     </script>
+    <script>
+        const filterForm = document.querySelector('#filter-form');
+        const filterStatus = document.querySelector('#status');
+        const filterPriority = document.querySelector('#priority');
+
+        filterStatus.addEventListener('change', () => {
+            filterForm.submit();
+        });
+
+        filterPriority.addEventListener('change', () => {
+            filterForm.submit();
+        });
+    </script>
 </body>
