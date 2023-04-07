@@ -63,6 +63,23 @@
         </div>
     <h2 class="hidden" id="update-task-header">Update Task: </h2>
             <!-- Add Update Task  -->
+    <form id="edit-task-form" method="POST" class="hidden">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="description" placeholder="Description">
+        <select name="priority" required>
+            <option value="" disabled>Priority</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+        <select name="status" required>
+            <option value="" disabled>Status</option>
+            <option value="Not Started">Not Started</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select>
+        <button type="submit">Update Task</button>
+    </form> 
      <h2>Add Task: </h2>     
     <!-- Add "Add" Task  -->
     <h2>Current Tasks: </h2>
