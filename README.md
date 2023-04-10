@@ -8,3 +8,14 @@
 #Functions not directly called by a user
 #get_status_count(): Used by filter_tasks() to count the number of tasks with each status value
 #get_priority_count(): Used by filter_tasks() to count the number of tasks with each priority value
+
+To get this program running following packages needs to be installed and the pip version has to be updated.
+To do this: 
+First update pip by:
+pip install --upgrade pip     - current version as of 4-10-2023 is 23.0.1
+Then Install Flask by:
+pip install flask
+Then install pyMongo by:
+pip install flask_pymongo
+
+THe program should be running without errors
