@@ -18,4 +18,4 @@ pip install flask
 Then install pyMongo by:
 pip install flask_pymongo
 
-THe program should be running without errors
+The program should be running without errors
