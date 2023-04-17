@@ -12,14 +12,14 @@ collections = db.list_collection_names()
 #Functions for filter_tasks() function
 def get_status_count():
     return{
-        'not_started' : mongo.db.tasks.count_documents({'status' : 'Not Started'}),
-        'in_progress' : mongo.db.tasks.count_documents({'status' : 'In Progress'}),
-        'completed' : mongo.db.tasks.count_documents({'status' : 'Completed'}),
+        'not_started' : mongo.db.task.count_documents({'status' : 'Not Started'}),
+        'in_progress' : mongo.db.task.count_documents({'status' : 'In Progress'}),
+        'completed' : mongo.db.task.count_documents({'status' : 'Completed'}),
     }
 
 def get_priority_count():
     return{
-        'low' : mongo.db.tasks.count_documents({'priority' : 'Low'}),
+        'low' : mongo.db.task.count_documents({'priority' : 'Low'}),
         'medium' : mongo.db.tasks.count_documents({'priority' : 'Medium'}),
         'high' : mongo.db.tasks.count_documents({'priority' : 'High'}),
     }
@@ -49,7 +49,7 @@ def add_task():
         "priority": request.form.get("priority"),
         "status": request.form.get("status")        
     }
-    mongo.db.task.insert_one(task)
+    mongo.db.tasks.insert_one(task)
     return redirect(url_for('index'))
 
 @app.route('/filter_tasks', methods = ['POST'])
