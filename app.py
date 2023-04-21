@@ -60,17 +60,13 @@ def filter_tasks():
 
     query = {}
     if status_filter and priority_filter:
-        query['$and'] = [{'status': {'$nin': status_filter}}, {'priority': {'$ne': priority_filter}}]
+        query['$and'] = [{'status': status_filter}, {'priority': priority_filter}]
     elif status_filter:
         query['status'] = status_filter
     elif priority_filter:
         query['priority'] = priority_filter
     elif search_filter:
         query['$text'] = {'$search' : search_filter}
-    #elif status_filter and priority_filter:
-    #    query['status'] = status_filter
-    #    query['priority'] = priority_filter
-    
     
     #Find all tasks from the mongoDB table using the value assigned to the query variable
     tasks = mongo.db.tasks.find(query)
