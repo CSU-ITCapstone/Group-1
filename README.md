@@ -18,4 +18,11 @@ pip install flask
 Then install pyMongo by:
 pip install flask_pymongo
 
+The second way and hopefully you should not need to run this program since the running will be done by render is to use gunicorn. 
+
+With gunicorn the library that needs to be installed is:
+pip install gunicorn
+
+Once that is installed you can run the program by typing gunicorn app:app
+
 The program should be running without errors
