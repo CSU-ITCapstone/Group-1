@@ -10,7 +10,7 @@
 #get_priority_count(): Used by filter_tasks() to count the number of tasks with each priority value
 
 This program is running python 3.8.16
-To check what the current version of pyton you are running type this command:
+To check what the current version of python you are running type this command:
 ```console
 $ python
 ```
