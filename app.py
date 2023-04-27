@@ -10,14 +10,14 @@ db = mongo.db
 db.tasks.create_index([("title", "text"), ("description", "text")]) # Add this line to create a text index on title and description fields
 collections = db.list_collection_names()
 #Functions for filter_tasks() function
-def get_status_count():
+def get_status_counts():
     return{
-        'not_started' : mongo.db.tasks.count_documents({'status' : 'Not Started'}),
-        'in_progress' : mongo.db.tasks.count_documents({'status' : 'In Progress'}),
-        'completed' : mongo.db.tasks.count_documents({'status' : 'Completed'}),
+        'not_started' : mongo.db.task.count_documents({'status' : 'Not Started'}),
+        'in_progress' : mongo.db.task.count_documents({'status' : 'In Progress'}),
+        'completed' : mongo.db.task.count_documents({'status' : 'Completed'}),
     }
 
-def get_priority_count():
+def get_priority_counts():
     return{
         'low' : mongo.db.tasks.count_documents({'priority' : 'Low'}),
         'medium' : mongo.db.tasks.count_documents({'priority' : 'Medium'}),
@@ -49,7 +49,7 @@ def add_task():
         "priority": request.form.get("priority"),
         "status": request.form.get("status")        
     }
-    mongo.db.task.insert_one(task)
+    mongo.db.tasks.insert_one(task)
     return redirect(url_for('index'))
 
 @app.route('/filter_tasks', methods = ['POST'])
@@ -59,7 +59,9 @@ def filter_tasks():
     search_filter = request.form.get('search_filter')
 
     query = {}
-    if status_filter:
+    if status_filter and priority_filter:
+        query['$and'] = [{'status': status_filter}, {'priority': priority_filter}]
+    elif status_filter:
         query['status'] = status_filter
     elif priority_filter:
         query['priority'] = priority_filter
@@ -68,11 +70,11 @@ def filter_tasks():
     
     #Find all tasks from the mongoDB table using the value assigned to the query variable
     tasks = mongo.db.tasks.find(query)
-    status_count = get_status_count()
-    priority_count = get_priority_count()
+    status_counts = get_status_counts()
+    priority_counts = get_priority_counts()
     total_tasks = mongo.db.tasks.count_documents({})
 
-    return render_template('index.html', tasks=tasks, status_count=status_count, priority_count=priority_count, total_tasks=total_tasks)
+    return render_template('index.html', tasks=tasks, status_counts=status_counts, priority_counts=priority_counts,total_tasks=total_tasks)
 
 @app.route('/delete_task/<task_id>', methods=['POST'])
 def delete_task(task_id):
