@@ -82,7 +82,7 @@ def delete_task(task_id):
     mongo.db.tasks.delete_one({'_id': ObjectId(task_id)})
     return redirect(url_for('index'))
 
-@app.route('/update_task', methods = ['POST'])
+@app.route('/update_task/<task_id>', methods=['POST'])
 def update_task(task_id):
     if not ObjectId.is_valid(task_id):
         return redirect(url_for('index'))
