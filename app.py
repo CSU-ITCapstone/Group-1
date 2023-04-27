@@ -94,7 +94,7 @@ def update_task(task_id):
     }
     total_tasks = db.tasks.count_documents({})
     mongo.db.tasks.update_one({"_id": ObjectId(task_id)}, {"$set": updated_task})
-    return redirect(url_for('index'), total_tasks=total_tasks)
+    return redirect(url_for('index'))
 
         
 if __name__ == '__main__':
