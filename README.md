@@ -9,11 +9,12 @@
 #get_status_count(): Used by filter_tasks() to count the number of tasks with each status value
 #get_priority_count(): Used by filter_tasks() to count the number of tasks with each priority value
 
-This program is running python 3.8.16
+This program is running the latest version of python 
 To check what the current version of python you are running type this command:
 ```console
 $ python
 ```
+- current version as of 4-27-2023 is 3.8.16
 
 **To get this program running the following packages needs to be installed and the pip version has to be updated. To do this:**
 
