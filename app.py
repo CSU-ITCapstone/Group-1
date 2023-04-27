@@ -81,22 +81,19 @@ def delete_task(task_id):
     return redirect(url_for('index'))
 
 @app.route('/update_task', methods = ['POST'])
-def update_task():
-    if request.method == 'POST':
-        # Collect the form data 
-        title_update = request.form.get('title_update')
-        description_update = request.form.get('description_update')
-        priority_update = request.form.get('priority_update')
-        status_update = request.form.get('status_update')
+def update_task(task_id):
+    if not ObjectId.is_valid(task_id):
+        return redirect(url_for('index'))
+    updated_task = {
+        "title": request.form.get("title"),
+        "description": request.form.get("description"),
+        "priority": request.form.get("priority"),
+        "status": request.form.get("status")
+    }
+    total_tasks = db.tasks.count_documents({})
+    mongo.db.tasks.update_one({"_id": ObjectId(task_id)}, {"$set": updated_task})
+    return redirect(url_for('index'), total_tasks=total_tasks)
 
-        # Update the task in the database 
-        query = {"title": title_update}
-        new_values = {"$set" : {"description": description_update,"priority": priority_update, "status": status_update}}
-        collections.update_one(query,new_values)
-
-        return redirect("/")
-    else:
-        return 'Error: Invalid request method'
         
 if __name__ == '__main__':
     app.run(debug = True)
