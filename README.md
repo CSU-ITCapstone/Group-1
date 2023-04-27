@@ -14,8 +14,9 @@ To check what the current version of python you are running type this command:
 ```console
 $ python
 ```
-To get this program running the following packages needs to be installed and the pip version has to be updated.
-To do this: 
+
+**To get this program running the following packages needs to be installed and the pip version has to be updated. To do this:**
+
 First update pip by typing this command:
 ```console
 $ pip install --upgrade pip     
@@ -30,7 +31,15 @@ Then install pyMongo by typing this command:
 ```console
 $ pip install flask_pymongo
 ```
-The second way and hopefully you should not need to run this program since the running will be done by render is to use gunicorn. 
+Then run the program by typing:
+```console
+$ python app.py
+```
+The program should be running without errors
+
+**Another way to run the program still using the initial libraries is to use gunicorn.** 
+
+This makes use of the file titled *Procfile* .
 
 To install the gunicorn library type this command:
 ```console
