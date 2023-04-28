@@ -16,10 +16,6 @@ form select {
     flex: 1;
 }
 
-form button[type="submit"] {
-    flex: 0;
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -45,6 +41,10 @@ th, td {
     display: none;
 }
 
+.delete button[type="submit"] {
+    margin-right: 5px;
+    padding: 5px 10px;
+}
 .edit-button {
     background-color: #28a745;
     border: none;

@@ -118,7 +118,7 @@
                 <td>
                     <button type="button" class="edit-button" data-id="{{ task._id }}">Edit</button>
                     <form method="POST" action="{{ url_for('delete_task', task_id=task._id) }}" class="inline-form">
-                        <button type="submit">Delete</button>
+                        <button type="submit" class="delete-button">Delete</button>
                     </form>
                 </td>
             </tr>
