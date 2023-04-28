@@ -9,6 +9,12 @@
 #get_status_count(): Used by filter_tasks() to count the number of tasks with each status value
 #get_priority_count(): Used by filter_tasks() to count the number of tasks with each priority value
 
+**Render Info:**
+
+Link to render(tinyurl): https://tinyurl.com/taskmanagerapp1
+
+Link to render (actual): https://taskmanager-group1.onrender.com/
+
 This program is running the latest version of python 
 To check what the current version of python you are running type this command:
 ```console
