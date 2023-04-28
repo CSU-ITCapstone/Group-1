@@ -13,7 +13,9 @@
 
 Link to render(tinyurl): https://tinyurl.com/taskmanagerapp1
 
-Link to render (actual): https://taskmanager-group1.onrender.com/
+Link to render (actual): https://taskmanager-group1.onrender.com
+
+**Python Info:**
 
 This program is running the latest version of python 
 To check what the current version of python you are running type this command:
