@@ -12,9 +12,9 @@ collections = db.list_collection_names()
 #Functions for filter_tasks() function
 def get_status_counts():
     return{
-        'not_started' : mongo.db.task.count_documents({'status' : 'Not Started'}),
-        'in_progress' : mongo.db.task.count_documents({'status' : 'In Progress'}),
-        'completed' : mongo.db.task.count_documents({'status' : 'Completed'}),
+        'not_started' : mongo.db.tasks.count_documents({'status' : 'Not Started'}),
+        'in_progress' : mongo.db.tasks.count_documents({'status' : 'In Progress'}),
+        "completed": mongo.db.tasks.count_documents({"status": "Completed"}),
     }
 
 def get_priority_counts():
@@ -28,9 +28,9 @@ def index():
     tasks = db.tasks.find().sort("priority", -1)
    # print ("tasks = ",tasks)
     status_counts = {
-        "not_started": db.tasks.count_documents({"status": "Not Started"}),
-        "in_progress": db.tasks.count_documents({"status": "In Progress"}),
-        "completed": db.tasks.count_documents({"status": "Completed"})
+        "not_started": mongo.db.tasks.count_documents({"status": "Not Started"}),
+        "in_progress": mongo.db.tasks.count_documents({"status": "In Progress"}),
+        "completed": mongo.db.tasks.count_documents({"status": "Completed"})
     }
     priority_counts = {
         "high": mongo.db.tasks.count_documents({"priority": "High"}),
