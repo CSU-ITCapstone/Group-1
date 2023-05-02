@@ -18,16 +18,17 @@
          <h1>Task Manager</h1>
          <p>Total Tasks: {{total_tasks}}</p>
          <div id="counters">
-        
+
+            <b>Tasks by Priority: </b>
+            High: {{ priority_counts.high }}
+            Medium: {{ priority_counts.medium }}
+            Low: {{ priority_counts.low }}
             <b>Tasks by Status: </b>
             Not Started: {{ status_counts.not_started }}
             In Progress: {{ status_counts.in_progress }}
             Completed: {{ status_counts.completed }}
             <br>
-            <b>Tasks by Priority: </b>
-            High: {{ priority_counts.high }}
-            Medium: {{ priority_counts.medium }}
-            Low: {{ priority_counts.low }}
+
             
         </div>    
          <div class="container my-4">
