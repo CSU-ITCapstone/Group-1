@@ -25,7 +25,7 @@ def get_priority_counts():
     }
 @app.route('/')    
 def index():
-    tasks = db.tasks.find().sort("priority", -1)
+    tasks = db.tasks.find().sort("priority", 1)
     status_counts = {
         "not_started": mongo.db.tasks.count_documents({"status": "Not Started"}),
         "in_progress": mongo.db.tasks.count_documents({"status": "In Progress"}),
