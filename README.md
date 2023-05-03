@@ -1,4 +1,8 @@
 # Group-1
+**About the Project:**
+
+This is a simple task managing program that the user can add, delete, filter out tasks. The user can also check how many tasks are there as well as how many tasks are by status and priority. 
+
 **Render Info:**
 
 Link to render(tinyurl): https://tinyurl.com/taskmanagerapp1
